@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1599224445 source:c:\users\alex\desktop\programación\prueba01\proyecto\funciones.c
+	"funciones.h"
+
+1599224992 c:\users\alex\desktop\programación\prueba01\proyecto\funciones.h
+
+1599224604 source:c:\users\alex\desktop\programación\prueba01\proyecto\main.c
+	<stdio.h>
+	"funciones.h"
+

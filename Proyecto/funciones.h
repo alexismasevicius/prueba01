@@ -1,0 +1,1 @@
+int sumarNumeros(int,int);
