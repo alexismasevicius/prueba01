@@ -33,7 +33,14 @@ float dividir (int operador1,int operador2)
 {
     float resultado;
 
-    resultado = operador1 / operador2;
+    if(operador2==0)
+    {
+        resultado=0;
+    }
+    else
+    {
+        resultado=(float)operador1/operador2;
+    }
 
     return resultado;
 }
