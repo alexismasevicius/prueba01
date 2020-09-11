@@ -47,9 +47,14 @@ int main()
             resultadoInt=multiplicar(primerOperando,segundoOperando);
             printf("\nEl resultado de la multiplicación entre %d y %d es: %d.\n",primerOperando,segundoOperando,resultadoInt);
             break;
-       /* case 5:
-            resultadoInt=factorizar(primerOperando,segundoOperando);
-            break;*/
+        case 5:
+            resultadoInt=factorizar(primerOperando);
+            printf("\nEl factorial de %d es %d\n",primerOperando,resultadoInt);
+            resultadoInt=factorizar(segundoOperando);
+            printf("\nEl factorial de %d es %d\n",segundoOperando,resultadoInt);
+
+
+            break;
     }
 
 

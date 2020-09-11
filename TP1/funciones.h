@@ -10,5 +10,8 @@ float dividir (int operador1, int operador2);
 
 int multiplicar (int operador1,int operador2);
 
+int factorizar (int operador);
+
+
 
 #endif

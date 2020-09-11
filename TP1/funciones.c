@@ -45,3 +45,18 @@ float dividir (int operador1,int operador2)
     return resultado;
 }
 
+int factorizar (int operador)
+{
+    int resultado;
+
+    if(operador==0)
+    {
+        resultado=1;
+    }
+    else
+    {
+        resultado=operador*factorizar(operador-1);
+    }
+    return resultado;
+}
+
