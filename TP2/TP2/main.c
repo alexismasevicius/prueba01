@@ -9,6 +9,7 @@ int main()
     Employee listOfEmployees[TAMANIO];
     int opcion;
     int flagFirstAdd;
+    int orderChoice;
 
     flagFirstAdd=0;
 
@@ -109,13 +110,28 @@ int main()
                     switch(opcion)
                     {
                         case 1:
-                            ShowEmployeeById (listOfEmployees, TAMANIO);
+                            PrintEmployees (listOfEmployees, TAMANIO);
+                            break;
+                        case 2:
+                            printf("Ingrese 1 para orden ascendente y 2 para orden descendente\n");
+                            scanf("%d", &orderChoice);
+                            if(orderChoice!=1 && orderChoice!=2)
+                            {
+                                printf("Ingrese 1 para orden ascendente y 2 para orden descendente\n");
+                                scanf("%d", &orderChoice);
+                            }
+                            else
+                            {
+                                SortEmployeeByName (listOfEmployees, TAMANIO, orderChoice);
+                            }
+                            break;
+                        case 3:
+                            printf("El total de salarios es de: %f\n", TotalCalculator(listOfEmployees, TAMANIO));
+                            printf("El promedio de salarios es de: %f\n", AverageCalculator(listOfEmployees, TAMANIO));
                             break;
                         default:
                             printf("\nNo ha seleccionado una opcion valida.\n");
-
                     }
-
                     break;
                 }
 

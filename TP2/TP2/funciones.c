@@ -14,7 +14,7 @@ void MenuInicial()
     printf("3-BAJA\n");
     printf("4-INFORMAR\n");
     printf("5-HERRAMIENTAS\n");
-    printf("10-Salir \n");
+    printf("10-SALIR \n");
     printf("*******************************\n");
 
 }
@@ -47,7 +47,9 @@ void MenuDelete()
 void MenuInform()
 {
     printf("*******************************\n");
-    printf("1-MOSTRAR LISTA ORDENADA POR ID\n");
+    printf("1-MOSTRAR LISTA\n");
+    printf("2-ORDENAR POR APELLIDO Y SECTOR\n");
+    printf("3-INFORMAR TOTAL, PROMEDIO DE SALARIOS Y CUANTOS SUPERAN EL SALARIO PROMEDIO\n");
     printf("*******************************\n");
 }
 
@@ -81,7 +83,7 @@ int SearchEmptySpace (Employee list[], int len)
     int emptySpace;
     int i;
 
-    emptySpace=0;
+    emptySpace=-1;
 
     for(i=0; i<len; i++)
     {
@@ -140,6 +142,7 @@ Employee CreateEmployee ()
     return newEmployee;
 }
 
+
 ///CARGAR EMPLEADO
 void AddEmployee(Employee list[], int len)
 {
@@ -147,13 +150,21 @@ void AddEmployee(Employee list[], int len)
     int emptySpace;
     int counterEmptySpaces;
 
-    i=SearchEmptySpace(list, len);
-    emptySpace=i+1;
-    counterEmptySpaces=len-i;
-    printf("\nEl espacio %d se encuentra vacio.",emptySpace);
-    printf("\nLe quedan %d espacios vacios para cargar.\n",counterEmptySpaces);
-    list[i] = CreateEmployee();
-    list[i].id = i+1;
+    i=SearchEmptySpace(list, len); //busca espacio libre en memoria
+    emptySpace=i+1;                 //agrego 1 para mostrar
+
+    if(emptySpace!=0)
+    {
+        counterEmptySpaces=len-i;
+        printf("\nEl espacio %d se encuentra vacio.",emptySpace);
+        printf("\nLe quedan %d espacios vacios para cargar.\n",counterEmptySpaces);
+        list[i] = CreateEmployee();
+        list[i].id = i+1;
+    }
+    else
+    {
+        printf("\nNo quedan mas lugares para cargar.\n");
+    }
 
 }
 
@@ -232,20 +243,126 @@ void DeleteEmployee (Employee list[],int len)
 ///******************************************************************************************************************************************
 
 ///MOSTRAR LISTA POR ID
-void ShowEmployeeById (Employee list[],int len)
+void PrintEmployees (Employee list[],int len)
 {
     int i;
 
-    printf("\nLos empleados ordenados por ID son:\n");
+    printf("\n--------------------------------------------------------------\n");
+    printf("\nLos empleados son:\n");
 
-    printf("%s %8s %8s %20s %20s\n","ID","NOMBRE","APELLIDO","SALARIO","SECTOR");
+    printf("%-5s %-20s %-20s %20s %5s\n","ID","NOMBRE","APELLIDO","SALARIO","SECTOR");
 
     for(i=0;i<len;i++)
     {
-        printf("%d %8s %8s %20f %20d\n",list[i].id,list[i].name,list[i].lastName,list[i].salary,list[i].sector);
+        if(list[i].isEmpty==1)
+        {
+            printf("%-5d %-20s %-20s %20f %5d\n",list[i].id,list[i].name,list[i].lastName,list[i].salary,list[i].sector);
+        }
+    }
+
+    printf("\n--------------------------------------------------------------\n");
+
+}
+
+///ORDENAR LISTA POR APELLIDO
+
+void SortEmployeeByName (Employee list[], int len, int order)
+{
+    int i;
+    int j;
+    Employee auxEmployee;
+
+    if(order==1)
+    {
+        for(i=0; i<len-1; i++)
+        {
+            for(j=i+1; j<len; j++)
+            {
+                if(strcmp(list[j].lastName,list[i].lastName)<0)
+                {
+                   auxEmployee = list[i];
+                   list[i] = list[j];
+                   list[j] = auxEmployee;
+                }
+                if(list[i].sector>list[j].sector)
+                {
+                   auxEmployee = list[i];
+                   list[i] = list[j];
+                   list[j] = auxEmployee;
+                }
+            }
+        }
+    }
+    else
+    {
+        for(i=0; i<len-1; i++)
+        {
+            for(j=i+1; j<len; j++)
+            {
+                if(strcmp(list[j].lastName,list[i].lastName)>0)
+                {
+                   auxEmployee = list[i];
+                   list[i] = list[j];
+                   list[j] = auxEmployee;
+                }
+                if(list[i].sector<list[j].sector)
+                {
+                   auxEmployee = list[i];
+                   list[i] = list[j];
+                   list[j] = auxEmployee;
+                }
+            }
+        }
     }
 
 }
+
+///CALCULAR PROMEDIO
+
+float AverageCalculator (Employee list[], int len)
+{
+    int i;
+    float acc;
+    int counter;
+    float ans;
+
+    acc=0;
+    counter=0;
+
+    for(i=0;i<len;i++)
+    {
+        if(list[i].isEmpty==1)
+        {
+            counter++;
+            acc=acc+list[i].salary;
+        }
+    }
+    ans=acc/counter;
+
+    return ans;
+}
+
+///CALCULAR TOTAL
+float TotalCalculator (Employee list[], int len)
+{
+    int i;
+    float acc;
+
+    acc=0;
+
+    for(i=0;i<len;i++)
+    {
+        if(list[i].isEmpty==1)
+        {
+            acc=acc+list[i].salary;
+        }
+    }
+
+    return acc;
+}
+
+
+///MOSTRAR EMPLEADOS QUE SUPERAN EL PROMEDIO
 
 ///******************************************************************************************************************************************
 
