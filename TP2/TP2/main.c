@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "funciones.h"
 
-#define TAMANIO 6
+#define TAMANIO 1000
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
         scanf("%d", &opcion);
         switch(opcion)
         {
-            ///MENU AGREGAR
+    ///MENU AGREGAR
             case 1:
                 printf("\n");
                 MenuAdd();
@@ -48,7 +48,7 @@ int main()
                 }
             break;
 
-            ///MENU MODIFICAR
+    ///MENU MODIFICAR
             case 2:
                 printf("\n");
                 if(flagFirstAdd==0)
@@ -74,7 +74,7 @@ int main()
                     break;
                 }
 
-            ///MENU BORRAR
+    ///MENU BORRAR
             case 3:
                 printf("\n");
                 if(flagFirstAdd==0)
@@ -100,7 +100,7 @@ int main()
 
                 }
 
-            ///MENU INFORMAR
+    ///MENU INFORMAR
             case 4:
                 printf("\n");
                 if(flagFirstAdd==0)
@@ -139,7 +139,7 @@ int main()
                     break;
                 }
 
-            ///MENU HERRAMIENTAS
+    ///MENU HERRAMIENTAS
             case 5:
                 printf("\n");
                 MenuTools();
