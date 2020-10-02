@@ -172,16 +172,14 @@ void AddEmployee(Employee list[], int len)
 
 
 ///MODIFICAR EMPLEADO
-void ModifyEmployee (Employee list[],int len)
+void ModifyEmployee (Employee list[],int len, int id)
 {
-    int ansOne;
     int ansTwo;
     Employee newEmployee;
     int i;
 
-    printf("\n Ingrese el numero de ID del empleado que desea modificar: ");
-    scanf("%d", &ansOne);
-    i=FindEmployeeById(list,len,ansOne);
+
+    i=FindEmployeeById(list,len,id);
 
     printf("\n Ingrese el aspecto que desea modificar que desea modificar: \n");
     printf("\n*******************************\n");
@@ -209,12 +207,12 @@ void ModifyEmployee (Employee list[],int len)
         case 3:
             printf("Ingrese salario: ");
             scanf("%f", &newEmployee.salary);
-            newEmployee.salary=list[i].salary;
+            list[i].salary=newEmployee.salary;
             break;
         case 4:
             printf("Ingrese sector: ");
             scanf("%d", &newEmployee.sector);
-            newEmployee.sector=list[i].sector;
+            list[i].sector=newEmployee.sector;
             break;
         default:
             printf("Error. Ingresa un numero del 1 al 4");
@@ -227,15 +225,11 @@ void ModifyEmployee (Employee list[],int len)
 ///******************************************************************************************************************************************
 
 ///BORRAR EMPLEADO
-void DeleteEmployee (Employee list[],int len)
+void DeleteEmployee (Employee list[],int len, int id)
 {
-    int ansOne;
     int i;
 
-    printf("\n Ingrese el numero de ID del empleado que desea borrar: ");
-    scanf("%d", &ansOne);
-    i=FindEmployeeById(list,len,ansOne);
-
+    i=FindEmployeeById(list,len,id);
     list[i].isEmpty=0;
 }
 
@@ -317,17 +311,19 @@ void SortEmployeeByName (Employee list[], int len, int order)
 
 }
 
-///CALCULAR PROMEDIO
+///CALCULAR TOTAL, PROMEDIO Y  SALARIOS MAYORES AL PROMEDIO
 
-float AverageCalculator (Employee list[], int len)
+void AverageCalculator (Employee list[], int len)
 {
     int i;
     float acc;
     int counter;
     float ans;
+    int higherSalarysCounter;
 
     acc=0;
     counter=0;
+    higherSalarysCounter=0;
 
     for(i=0;i<len;i++)
     {
@@ -339,30 +335,23 @@ float AverageCalculator (Employee list[], int len)
     }
     ans=acc/counter;
 
-    return ans;
-}
-
-///CALCULAR TOTAL
-float TotalCalculator (Employee list[], int len)
-{
-    int i;
-    float acc;
-
-    acc=0;
-
     for(i=0;i<len;i++)
     {
         if(list[i].isEmpty==1)
         {
-            acc=acc+list[i].salary;
+            if(list[i].salary>ans)
+            {
+                higherSalarysCounter++;
+            }
         }
     }
 
-    return acc;
+    printf("El total de salarios es de: %f\n", acc);
+    printf("El promedio de salarios es de: %f\n", ans);
+    printf("La cantidad de empleados que superan el promedio es de: %d\n", higherSalarysCounter);
+
 }
 
-
-///MOSTRAR EMPLEADOS QUE SUPERAN EL PROMEDIO
 
 ///******************************************************************************************************************************************
 

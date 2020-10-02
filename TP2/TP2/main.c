@@ -9,6 +9,7 @@ int main()
     Employee listOfEmployees[TAMANIO];
     int opcion;
     int flagFirstAdd;
+    int idRecibida;
     int orderChoice;
 
     flagFirstAdd=0;
@@ -62,7 +63,9 @@ int main()
                     switch(opcion)
                     {
                         case 1:
-                            ModifyEmployee (listOfEmployees, TAMANIO);
+                            printf("\n Ingrese el numero de ID del empleado que desea modificar: ");
+                            scanf("%d", &idRecibida);
+                            ModifyEmployee (listOfEmployees, TAMANIO, idRecibida);
                         break;
                         default:
                             printf("\nNo ha seleccionado una opcion valida.\n");
@@ -86,7 +89,9 @@ int main()
                     switch(opcion)
                     {
                         case 1:
-                            ModifyEmployee (listOfEmployees, TAMANIO);
+                            printf("\n Ingrese el numero de ID del empleado que desea borrar: ");
+                            scanf("%d", &idRecibida);
+                            DeleteEmployee (listOfEmployees, TAMANIO,idRecibida);
                             break;
                         default:
                             printf("\nNo ha seleccionado una opcion valida.\n");
@@ -126,8 +131,7 @@ int main()
                             }
                             break;
                         case 3:
-                            printf("El total de salarios es de: %f\n", TotalCalculator(listOfEmployees, TAMANIO));
-                            printf("El promedio de salarios es de: %f\n", AverageCalculator(listOfEmployees, TAMANIO));
+                            AverageCalculator (listOfEmployees, TAMANIO);
                             break;
                         default:
                             printf("\nNo ha seleccionado una opcion valida.\n");
