@@ -6,7 +6,6 @@
 
 int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 {
-
     int i;
     int cont;
     int len;
@@ -15,8 +14,6 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
     char horas[50];
     char sueldo[50];
     Employee* miEmpleado;
-    Employee* aux;
-
 
 
     i=0;
@@ -32,7 +29,6 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 
             ll_add(pArrayListEmployee, miEmpleado);
 
-
             i++;
         }
 
@@ -41,15 +37,9 @@ int parser_EmployeeFromText(FILE* pFile, LinkedList* pArrayListEmployee)
 
     len = ll_len(pArrayListEmployee);
 
-    for(i=0; i<len; i++)
-   {
-     aux=(Employee*)ll_get(pArrayListEmployee, i);
-    printf("%4d |%15s |%8d | %4d\n", aux->id,
-                                aux->nombre,
-                                aux->horasTrabajadas,
-                                aux->sueldo);
-    }
-        printf("cantidad de elementos: %d \n", len);
+    employee_list(pArrayListEmployee,len);
+
+    printf("cantidad de elementos cargados es de: %d \n", len);
 
     return 1;
 

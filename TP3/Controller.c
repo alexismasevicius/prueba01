@@ -2,25 +2,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include "LinkedList.h"
+#include "Controller.h"
 #include "Employee.h"
 #include "parser.h"
 
 int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 {
     FILE* pFile;
+    int controlador;
 
+    controlador=ll_isEmpty(pArrayListEmployee);
+    pFile = fopen(path, "r");
 
-    if(ll_isEmpty(pArrayListEmployee)==0)
+    if(controlador==1)
     {
-        pArrayListEmployee = ll_newLinkedList();
-
-        pFile = fopen(path, "r");
-
-        parser_EmployeeFromText(pFile, pArrayListEmployee);
+        if(pFile!=NULL && pArrayListEmployee!=NULL)
+        {
+            parser_EmployeeFromText(pFile, pArrayListEmployee);
+        }
+        else
+        {
+            printf("Error.\n");
+        }
     }
     else
     {
-        printf("Ya hay una lista cargada.");
+        printf("\nYa hay una lista cargada\n\n");
     }
 
 
@@ -37,25 +44,113 @@ int controller_loadFromBinary(char* path, LinkedList* pArrayListEmployee)
 
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
-    //ALTA EMPLEADO
-    return 1;
+    Employee* miEmpleado;
+    int auxId;
+    int index;
+
+
+    miEmpleado=employee_new();
+
+    if(miEmpleado!=NULL)
+    {
+        auxId=employee_NewId(pArrayListEmployee);
+        employee_setId(miEmpleado,auxId);
+        index=auxId-1;
+        ll_push(pArrayListEmployee,index,miEmpleado);
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 
 int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int id;
+    Employee* miEmpleado;
+    int controlador;
+
+    controlador=ll_isEmpty(pArrayListEmployee);
+
+    controller_ListEmployee(pArrayListEmployee);
+
+    if(controlador==0)
+    {
+        printf("\nIngrese el numero de ID del empleado que desea modificar: \n");
+        scanf("%d", &id);
+        miEmpleado=employee_new();
+        if(miEmpleado!=NULL)
+        {
+            employee_setId(miEmpleado,id);
+            ll_set(pArrayListEmployee,id-1, miEmpleado);
+            return 1;
+        }
+        else
+        {
+            printf("Error.\n");
+            return 0;
+        }
+    }
+    else
+    {
+        printf("Error.\n");
+        return 0;
+    }
 }
 
 
 int controller_removeEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int id;
+    int controlador;
+
+    if(pArrayListEmployee!=NULL)
+    {
+        controlador=ll_isEmpty(pArrayListEmployee);
+
+        controller_ListEmployee(pArrayListEmployee);
+
+        if(controlador==0)
+        {
+            printf("\nIngrese el numero de ID del empleado que desea borrar: \n");
+            scanf("%d", &id);
+
+            ll_remove(pArrayListEmployee,id-1);
+            return 1;
+        }
+        else
+        {
+            printf("Error.\n");
+            return 0;
+
+        }
+    }
+    else
+    {
+        printf("Error.\n");
+        return 0;
+    }
 }
 
 
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
+    int len;
+
+
+    if(pArrayListEmployee!=NULL)
+    {
+            len=ll_len(pArrayListEmployee);
+            employee_list(pArrayListEmployee,len);
+    }
+    else
+    {
+        printf("Error!\n");
+    }
+
+
     return 1;
 }
 

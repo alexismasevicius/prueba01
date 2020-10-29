@@ -12,6 +12,11 @@ Employee* employee_new();
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr);
 void employee_delete();
 
+int employee_list(LinkedList* pArrayListEmployee, int len);
+
+int employee_NewId(LinkedList* pArrayListEmployee);
+
+
 int employee_setId(Employee* this,int id);
 int employee_getId(Employee* this,int* id);
 

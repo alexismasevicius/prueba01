@@ -245,3 +245,51 @@
 
 1603743750 c:\users\alex\desktop\tp3\controller.h
 
+1603994012 source:c:\users\alex\desktop\programación\prueba01\tp3\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"parser.h"
+
+1603638108 c:\users\alex\desktop\programación\prueba01\tp3\linkedlist.h
+
+1603991585 c:\users\alex\desktop\programación\prueba01\tp3\employee.h
+
+1603638110 c:\users\alex\desktop\programación\prueba01\tp3\parser.h
+
+1603993487 source:c:\users\alex\desktop\programación\prueba01\tp3\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1603991616 source:c:\users\alex\desktop\programación\prueba01\tp3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1603743750 c:\users\alex\desktop\programación\prueba01\tp3\controller.h
+
+1603975407 source:c:\users\alex\desktop\programación\prueba01\tp3\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1602950499 source:c:\users\alex\desktop\programación\prueba01\tp3\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+
+1602950500 c:\users\alex\desktop\programación\prueba01\tp3\utn.h
+

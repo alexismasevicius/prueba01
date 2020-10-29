@@ -10,6 +10,7 @@ int main()
 {
     LinkedList* miLista;
 
+    miLista = ll_newLinkedList();
 
     int respuesta;
     do
@@ -19,23 +20,22 @@ int main()
     switch(respuesta)
     {
         case 1:
-        controller_loadFromText("data.csv", miLista);
+            controller_loadFromText("data.csv", miLista);
         break;
         case 2:
 
         break;
         case 3:
-
+            controller_addEmployee(miLista);
         break;
         case 4:
-
+            controller_editEmployee(miLista);
         break;
         case 5:
-
+            controller_removeEmployee(miLista);
         break;
-
         case 6:
-
+            controller_ListEmployee(miLista);
         break;
         case 7:
 
