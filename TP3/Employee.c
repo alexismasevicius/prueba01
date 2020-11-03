@@ -59,34 +59,33 @@ Employee* employee_new()
 
 int employee_NewId(LinkedList* pArrayListEmployee)
 {
-    int i;
     int len;
     Employee* aux;
     int auxId;
-    len=ll_len(pArrayListEmployee);
 
-    if(len>0)
+    if(pArrayListEmployee!=NULL)
     {
-        for(i=0;i<len;i++)
+        len=ll_len(pArrayListEmployee);
+        len--;
+        aux=(Employee*)ll_get(pArrayListEmployee, len);
+        if(aux!=NULL)
         {
-            aux=(Employee*)ll_get(pArrayListEmployee, i);
             employee_getId(aux,&auxId);
-            if(auxId!=i+1)
-            {
-                auxId=auxId-1;
-                break;
-            }
-            else
-            {
-                auxId=len+1;
-            }
+            auxId++;
+            printf("\n El ID del nuevo empleado es: %d\n", auxId);
+        }
+        else
+        {
+            auxId=-1;
+            printf("No hay lista cargada.\n");
         }
     }
     else
     {
-        auxId=1;
+        printf("Error./n");
     }
-    printf("\n%d\n", auxId);
+
+
     return auxId;
 }
 
@@ -261,28 +260,92 @@ int employee_getSueldo(Employee* this,int* sueldo)
 }
 
 
-int employee_CompareByName(Employee* e1, Employee* e2)
+int employee_CompareByName(void* e1, void* e2)
 {
-    return strcmp(e1->nombre,e2->nombre);
-}
+    Employee* auxEmpleado;
+    Employee* auxEmpleadoDos;
+    char nombreUno[50];
+    char nombreDos[50];
 
-int employee_CompareById(Employee* e1, Employee* e2)
-{
-    int comp = 0;
 
-    if(e1->id > e2->id)
+    int resultado;
+    auxEmpleado=e1;
+    auxEmpleadoDos=e2;
+
+    if(e1!=NULL && e2!=NULL)
     {
-        comp = 1;
+        employee_getNombre(auxEmpleado,nombreUno);
+        employee_getNombre(auxEmpleadoDos,nombreDos);
+        resultado=strcmp(nombreUno,nombreDos);
+
+        return resultado;
     }
     else
     {
-        if(e1->id < e2->id)
-        {
-            comp=-1;
-        }
+        return 0;
     }
+}
+
+int employee_CompareById(void* e1, void* e2)
+{
+    int comp = 0;
+
+    Employee* auxEmpleado;
+    Employee* auxEmpleadoDos;
+    auxEmpleado=e1;
+    auxEmpleadoDos=e2;
+    int idUno;
+    int idDos;
+
+    if(e1!=NULL && e2!=NULL)
+    {
+
+        employee_getId(auxEmpleado, &idUno);
+        employee_getId(auxEmpleadoDos, &idDos);
+        if(idUno > idDos)
+        {
+            comp = 1;
+        }
+        else
+        {
+            if(idUno < idDos)
+            {
+                comp=-1;
+            }
+        }
+
+    }
+
 
     return comp;
 
 }
 
+int employee_IndexById(LinkedList* pArrayListEmployee,int id)
+{
+    Employee* miEmpleado;
+    int len;
+    int index;
+    int i;
+    int auxId;
+    if(pArrayListEmployee!=NULL)
+    {
+        len=ll_len(pArrayListEmployee);
+        for(i=0;i<len;i++)
+        {
+            miEmpleado=(Employee*)ll_get(pArrayListEmployee, i);
+            employee_getId(miEmpleado,&auxId);
+            if(id==auxId)
+            {
+                index=i;
+            }
+
+        }
+        return index;
+    }
+    else
+    {
+        return -1;
+    }
+
+}

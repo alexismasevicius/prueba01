@@ -245,7 +245,7 @@
 
 1603743750 c:\users\alex\desktop\tp3\controller.h
 
-1603994012 source:c:\users\alex\desktop\programación\prueba01\tp3\controller.c
+1604437440 source:c:\users\alex\desktop\programación\prueba01\tp3\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -256,11 +256,11 @@
 
 1603638108 c:\users\alex\desktop\programación\prueba01\tp3\linkedlist.h
 
-1603991585 c:\users\alex\desktop\programación\prueba01\tp3\employee.h
+1604435959 c:\users\alex\desktop\programación\prueba01\tp3\employee.h
 
 1603638110 c:\users\alex\desktop\programación\prueba01\tp3\parser.h
 
-1603993487 source:c:\users\alex\desktop\programación\prueba01\tp3\employee.c
+1604437782 source:c:\users\alex\desktop\programación\prueba01\tp3\employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -268,17 +268,18 @@
 	"Employee.h"
 	"utn.h"
 
-1603991616 source:c:\users\alex\desktop\programación\prueba01\tp3\main.c
+1604434328 source:c:\users\alex\desktop\programación\prueba01\tp3\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
+	"utn.h"
 
-1603743750 c:\users\alex\desktop\programación\prueba01\tp3\controller.h
+1604062668 c:\users\alex\desktop\programación\prueba01\tp3\controller.h
 
-1603975407 source:c:\users\alex\desktop\programación\prueba01\tp3\parser.c
+1604430374 source:c:\users\alex\desktop\programación\prueba01\tp3\parser.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
