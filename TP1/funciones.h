@@ -6,7 +6,7 @@ int sumar (int operador1,int operador2);
 
 int restar (int operador1,int operador2);
 
-float dividir (int operador1, int operador2);
+float dividir (int operador1, int operador2, float* operadorSalida);
 
 int multiplicar (int operador1,int operador2);
 

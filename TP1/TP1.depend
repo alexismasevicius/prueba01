@@ -19,3 +19,23 @@
 	<stdlib.h>
 	"funciones.h"
 
+1617894393 source:c:\users\alex\desktop\programacion\prueba01\tp1\funciones.c
+	<stdio.h>
+	<stdlib.h>
+
+1617895501 source:c:\users\alex\desktop\programacion\prueba01\tp1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"utn.h"
+
+1617893872 c:\users\alex\desktop\programacion\prueba01\tp1\funciones.h
+
+1617895494 source:c:\users\alex\desktop\programacion\prueba01\tp1\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1617894892 c:\users\alex\desktop\programacion\prueba01\tp1\utn.h
+

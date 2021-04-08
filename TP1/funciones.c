@@ -29,20 +29,26 @@ int multiplicar (int operador1,int operador2)
     return resultado;
 }
 
-float dividir (int operador1,int operador2)
+
+
+/** \brief realiza una division entre dos enteros.
+ *
+ * \param 1: operador1 dividendo.
+ * \param 2: operador2 divisor.
+ * \param 3: operadorSalida Puntero al espacio de memoria donde se dejara el resultado de la funcion.
+ * \return Retorna  1 si es exitosa, 0 si es ERROR
+ *
+ */
+float dividir (int operador1, int operador2, float* operadorSalida)
 {
-    float resultado;
+    int todoOk = 0;
 
-    if(operador2==0)
+    if(operador2!=0 && operadorSalida!=NULL)
     {
-        resultado=0;
+        *operadorSalida=(float)operador1/operador2;
+        todoOk=1;
     }
-    else
-    {
-        resultado=(float)operador1/operador2;
-    }
-
-    return resultado;
+    return todoOk;
 }
 
 int factorizar (int operador)

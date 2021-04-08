@@ -10,6 +10,10 @@ typedef struct
 
 Employee* employee_new();
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldoStr);
+Employee* nuevoEmpleado();
+
+int mostrarEmpleado(Employee* aux);
+
 void employee_delete();
 
 int employee_list(LinkedList* pArrayListEmployee, int len);

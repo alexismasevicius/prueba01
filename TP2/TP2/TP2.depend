@@ -12,3 +12,16 @@
 	<string.h>
 	"funciones.h"
 
+1601645833 source:c:\users\alex\desktop\programacion\prueba01\tp2\tp2\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+
+1601645719 c:\users\alex\desktop\programacion\prueba01\tp2\tp2\funciones.h
+
+1601667082 source:c:\users\alex\desktop\programacion\prueba01\tp2\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+

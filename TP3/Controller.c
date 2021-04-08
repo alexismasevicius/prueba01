@@ -72,7 +72,7 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     int auxId;
 
 
-    miEmpleado=employee_new();
+    miEmpleado=nuevoEmpleado();
 
     if(miEmpleado!=NULL)
     {
@@ -111,7 +111,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     {
         printf("\nIngrese el numero de ID del empleado que desea modificar: \n");
         scanf("%d", &id);
-        miEmpleado=employee_new();
+        miEmpleado=nuevoEmpleado();
         if(miEmpleado!=NULL)
         {
             employee_setId(miEmpleado,id);

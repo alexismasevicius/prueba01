@@ -8,6 +8,17 @@
 Employee* employee_new()
 {
     Employee* miEmpleado;
+
+    miEmpleado=(Employee*) malloc (sizeof(Employee));
+
+    return miEmpleado;
+
+}
+
+
+Employee* nuevoEmpleado()
+{
+    Employee* miEmpleado;
     char auxNom[50];
     char auxId[50];
     char auxHoras[50];
@@ -56,7 +67,6 @@ Employee* employee_new()
     return miEmpleado;
 
 }
-
 int employee_NewId(LinkedList* pArrayListEmployee)
 {
     int len;
@@ -98,9 +108,10 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
     int auxHoras;
     int auxSueldo;
 
-    miEmpleado = (Employee*) malloc (sizeof(Employee));
+    miEmpleado=employee_new();
 
-    auxInt=employee_setId(miEmpleado,atoi(idStr));
+
+    auxInt=employee_setId(miEmpleado,atoi(idStr)); // todo esto dentro del IF
     auxNom=employee_setNombre(miEmpleado,nombreStr);
     auxHoras=employee_setHorasTrabajadas(miEmpleado,atoi(horasTrabajadasStr));
     auxSueldo=employee_setSueldo(miEmpleado,atoi(sueldoStr));
@@ -113,7 +124,7 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
         employee_setSueldo(miEmpleado,atoi(sueldoStr));
     }
 
-    return miEmpleado;
+    return miEmpleado;// retornar mieEmpleado // si no miEmpleado=NULL
 
 }
 
@@ -121,6 +132,21 @@ int employee_list(LinkedList* pArrayListEmployee, int len)
 {
     int i;
     Employee* aux;
+
+
+    for(i=0; i<len; i++)
+   {
+        aux=(Employee*)ll_get(pArrayListEmployee, i);
+        mostrarEmpleado(aux);
+        ///TODOS LOS GET Y PRINTF VAN DENTRO DE LA FUNCION MOSTRAREMPLEADO
+        ///ESTA FUNCION SOLO LLAMA A LA FUNCION MOSTRAR
+    }
+
+    return 0;
+}
+
+int mostrarEmpleado(Employee* aux)
+{
     int id;
     int horas;
     char nombre[50];
@@ -130,30 +156,26 @@ int employee_list(LinkedList* pArrayListEmployee, int len)
     int auxHoras;
     int auxSueldo;
 
-    for(i=0; i<len; i++)
-   {
-        aux=(Employee*)ll_get(pArrayListEmployee, i);
-        auxInt=employee_getId(aux, &id);
-        auxNom=employee_getNombre(aux, nombre);
-        auxHoras=employee_getHorasTrabajadas(aux, &horas);
-        auxSueldo=employee_getSueldo(aux,&sueldo);
 
-        if(auxInt==1 && auxNom==1 && auxHoras==1 && auxSueldo==1)
-        {        employee_getId(aux, &id);
-            employee_getNombre(aux, nombre);
-            employee_getHorasTrabajadas(aux, &horas);
-            employee_getSueldo(aux,&sueldo);
-            printf("%4d |%15s |%8d | %4d\n",id,nombre,horas,sueldo);
-        }
-        else
-        {
-            printf("No se encontro.\n");
-        }
+    auxInt=employee_getId(aux, &id); //PONER LA VALIDACION DENTRO IF
+    auxNom=employee_getNombre(aux, nombre);
+    auxHoras=employee_getHorasTrabajadas(aux, &horas);
+    auxSueldo=employee_getSueldo(aux,&sueldo);
+
+    if(auxInt==1 && auxNom==1 && auxHoras==1 && auxSueldo==1)
+    {   employee_getId(aux, &id);
+        employee_getNombre(aux, nombre);
+        employee_getHorasTrabajadas(aux, &horas);
+        employee_getSueldo(aux,&sueldo);
+        printf("%4d |%15s |%8d | %4d\n",id,nombre,horas,sueldo);
+    }
+    else
+    {
+        printf("No se encontro.\n");
     }
 
     return 0;
 }
-
 
 int employee_setId(Employee* this,int id)
 {
@@ -277,13 +299,9 @@ int employee_CompareByName(void* e1, void* e2)
         employee_getNombre(auxEmpleado,nombreUno);
         employee_getNombre(auxEmpleadoDos,nombreDos);
         resultado=strcmp(nombreUno,nombreDos);
+    }
 
-        return resultado;
-    }
-    else
-    {
-        return 0;
-    }
+    return resultado;
 }
 
 int employee_CompareById(void* e1, void* e2)
@@ -299,24 +317,11 @@ int employee_CompareById(void* e1, void* e2)
 
     if(e1!=NULL && e2!=NULL)
     {
-
         employee_getId(auxEmpleado, &idUno);
         employee_getId(auxEmpleadoDos, &idDos);
-        if(idUno > idDos)
-        {
-            comp = 1;
-        }
-        else
-        {
-            if(idUno < idDos)
-            {
-                comp=-1;
-            }
-        }
-
+        comp=idUno-idDos;
+        //va a retornar mayor o menor segun este antes o despues
     }
-
-
     return comp;
 
 }
